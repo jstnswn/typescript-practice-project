@@ -11,3 +11,11 @@ class Message(db.Model):
 
     user = db.relationship('User', back_populates='messages')
     room = db.relationship('Room', back_populates='messages')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'room_id': self.room_id,
+            'user_id': self.user_id,
+            'text': self.text
+        }

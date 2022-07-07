@@ -7,3 +7,11 @@ class Room(db.Model):
     name = db.Column(db.String(100), nullable=False)
 
     messages = db.relationship('Message', back_populates='room')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'messages': [message.to_dict() for message in self.messages]
+        }
+
