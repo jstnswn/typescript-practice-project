@@ -17,7 +17,6 @@ def get_rooms():
 @login_required
 def get_room_massages(room_id):
     room = Room.query.get(room_id)
-    # print('😻', [message.to_dict() for message in room.messages])
 
     if not room:
         return {'error': 'No messages found'}, 400

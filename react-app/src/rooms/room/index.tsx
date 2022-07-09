@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessagesArray, getRoomMessages } from "../../store/messages";
 import { MessageInterface,  stateInterface } from "../../types";
+import MessageInput from "./MessageInput";
 
 const ActiveRoom: FC = (): React.ReactElement => {
     const [loaded, setLoaded] = useState<boolean>(false);
@@ -24,12 +25,15 @@ const ActiveRoom: FC = (): React.ReactElement => {
             {loaded && (
                 <div className='room'>
                     <h2>Chat</h2>
-                    <div className='message'>
+                    <div className='room-messages'>
                         <ul>
                             {messages.length > 0 && messages.map((message: MessageInterface, idx: number) => (
                                 <li key={idx}>{message.text}</li>
                             ))}
                         </ul>
+                    </div>
+                    <div className='chat-input'>
+                        <MessageInput />
                     </div>
                 </div>
             )}
