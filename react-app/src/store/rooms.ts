@@ -57,6 +57,8 @@ export default function rooms(state = initialState, action: any) {
                 byId: { ...state.byId, ...normalData },
                 allIds: action.rooms.map((room: RoomInterface) => room.id)
             }
+        case SELECT_ROOM:
+            return { ...state, selectedRoomId: action.roomId }
 
         default: return state;
     }

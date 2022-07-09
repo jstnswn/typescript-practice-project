@@ -1,7 +1,7 @@
 export interface RoomInterface {
     id: number,
     name: string,
-    message_ids: number[]
+    message_ids: number[],
 }
 
 export interface MessageInterface {
@@ -11,3 +11,27 @@ export interface MessageInterface {
     text: string
 }
 
+export interface UserInterface {
+    email: string,
+    id: number,
+    username: string
+}
+
+export interface stateInterface {
+    messages: {
+        allIds: number[],
+        byId: {
+            [key: number]: MessageInterface
+        }
+    }
+    rooms: {
+        allIds: number[],
+        byId: {
+            [key: number]: RoomInterface
+        }
+        selectedRoomId: number
+    },
+    session: {
+        user: UserInterface
+    }
+}

@@ -30,6 +30,7 @@ const Rooms: FC = (): React.ReactElement => {
         <>
             {loaded && (
                 <div className='rooms-list'>
+                    <h2>Rooms</h2>
                     {rooms.map((room: any, idx: number) => (
                         <li key={idx} onClick={() => handleRoomClick(room.id)}>{room.name}</li>
                     ))}
