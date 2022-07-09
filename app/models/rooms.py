@@ -12,6 +12,8 @@ class Room(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'messages': [message.to_dict() for message in self.messages]
+            'message_ids': [message.id for message in self.messages]
         }
 
+    def get_messages(self):
+        return {'messages': self.messages}

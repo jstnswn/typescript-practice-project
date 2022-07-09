@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Button from './components/Button';
+import Rooms from './rooms';
+import ActiveRoom from './rooms/room';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +30,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Rooms />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -43,6 +46,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+          <ActiveRoom roomId={1} />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
