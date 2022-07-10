@@ -11,6 +11,11 @@ export interface MessageInterface {
     text: string
 }
 
+export interface PostMessageInterface {
+    roomId: number,
+    text: string
+}
+
 export interface UserInterface {
     email: string,
     id: number,

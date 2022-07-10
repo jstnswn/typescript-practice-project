@@ -5,6 +5,7 @@ import { normalize } from "./utils";
 
 const LOAD_ROOMS = 'rooms/LOAD_ROOMS';
 const SELECT_ROOM = 'rooms/SELECT_ROOM';
+const ADD_ROOM_MESSAGE_ID = 'rooms/ADD_ROOM_MESSAGE_ID';
 
 const loadRooms = (rooms: RoomInterface[]) => {
     return {
@@ -20,12 +21,19 @@ export const selectRoom = (roomId: number) => {
     }
 }
 
+export const addRoomMessageId = (roomId: number, messageId: number) => {
+    return {
+        type: ADD_ROOM_MESSAGE_ID,
+        roomId,
+        messageId
+    }
+}
+
 export const getRooms = () => async (dispatch: ThunkDispatch<void, RoomInterface[], any>) => {
     const res = await fetch('/api/rooms/');
     const data = await res.json();
     dispatch(loadRooms(data.rooms));
 }
-
 
 
 // export const selectRoom
@@ -48,6 +56,7 @@ export const getRoomsArray = (state: any /*TEMP*/) => {
     return orderedIds.map((id: number) => state.rooms.byId[id]);
 }
 
+let stateCopy: any;
 export default function rooms(state = initialState, action: any) {
     switch (action.type) {
         case LOAD_ROOMS:
@@ -57,8 +66,14 @@ export default function rooms(state = initialState, action: any) {
                 byId: { ...state.byId, ...normalData },
                 allIds: action.rooms.map((room: RoomInterface) => room.id)
             }
+
         case SELECT_ROOM:
             return { ...state, selectedRoomId: action.roomId }
+
+        case ADD_ROOM_MESSAGE_ID:
+            stateCopy = { ...state };
+            stateCopy.byId[action.roomId].message_ids.push(action.messageId);
+            return stateCopy;
 
         default: return state;
     }

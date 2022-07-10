@@ -9,9 +9,13 @@ import MessageInput from "./MessageInput";
 const ActiveRoom: FC = (): React.ReactElement => {
     const [loaded, setLoaded] = useState<boolean>(false);
     const dispatch = useDispatch();
+
     const rooms = useSelector(({ rooms }: stateInterface) => rooms);
     const roomId = rooms.selectedRoomId;
-    const messages = useSelector(getMessagesArray);
+    // const messages = useSelector(({ messages }: stateInterface) => messages)
+    // const roomMessages = rooms.byId[roomId].message_ids.map((id: number) => messages.byId[id]);
+
+    const roomMessages = useSelector(getMessagesArray);
 
     useEffect(() => {
         (async() => {
@@ -27,7 +31,7 @@ const ActiveRoom: FC = (): React.ReactElement => {
                     <h2>Chat</h2>
                     <div className='room-messages'>
                         <ul>
-                            {messages.length > 0 && messages.map((message: MessageInterface, idx: number) => (
+                            {roomMessages.length > 0 && roomMessages.map((message: MessageInterface, idx: number) => (
                                 <li key={idx}>{message.text}</li>
                             ))}
                         </ul>
