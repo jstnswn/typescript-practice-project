@@ -1,0 +1,4 @@
+#nav-container ul {
+    display: flex;
+    justify-content: space-between;
+}

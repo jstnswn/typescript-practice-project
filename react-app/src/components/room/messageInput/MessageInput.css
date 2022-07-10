@@ -1,0 +1,10 @@
+.message-input {
+    width: 75vw;
+}
+
+.message-input input {
+    height: 60px;
+    width: 95%;
+    resize: none;
+
+}

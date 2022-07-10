@@ -44,8 +44,8 @@ export const postRoomMessage = (payload: PostMessageInterface) => async (dispatc
 
 // Helpers
 export const getMessagesArray = (state: any /*TEMP*/) => {
-    const selectedRoomId = state.rooms.selectedRoomId;
-    const messages = state.rooms.byId[selectedRoomId].message_ids.map((id: number) => {
+    const currentRoomId = state.rooms.currentRoomId;
+    const messages = state.rooms.byId[currentRoomId].message_ids.map((id: number) => {
         return state.messages.byId[id];
     });
 

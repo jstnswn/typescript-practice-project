@@ -47,7 +47,7 @@ const initialState = {
         }
     },
     allIds: [],
-    selectedRoomId: 1
+    currentRoomId: 1
 }
 
 // Helpers
@@ -68,7 +68,7 @@ export default function rooms(state = initialState, action: any) {
             }
 
         case SELECT_ROOM:
-            return { ...state, selectedRoomId: action.roomId }
+            return { ...state, currentRoomId: action.roomId }
 
         case ADD_ROOM_MESSAGE_ID:
             stateCopy = { ...state };

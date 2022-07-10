@@ -1,0 +1,7 @@
+.room-selection {
+    cursor: pointer;
+}
+
+.room-selection.active {
+    color: pink;
+}

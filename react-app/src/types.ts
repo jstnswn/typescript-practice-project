@@ -22,7 +22,7 @@ export interface UserInterface {
     username: string
 }
 
-export interface stateInterface {
+export interface StateInterface {
     messages: {
         allIds: number[],
         byId: {
@@ -34,7 +34,7 @@ export interface stateInterface {
         byId: {
             [key: number]: RoomInterface
         }
-        selectedRoomId: number
+        currentRoomId: number
     },
     session: {
         user: UserInterface
