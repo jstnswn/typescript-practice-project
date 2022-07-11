@@ -1,11 +1,24 @@
-import { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { getMessagesArray } from '../../../store/messages';
-import { MessageInterface } from '../../../types';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMessagesArray, getRoomMessages } from '../../../store/messages';
+import { MessageInterface, StateInterface } from '../../../types';
 import './Chat.css';
 
 const Chat: FC = () => {
+    const [loaded, setLoaded] = useState<boolean>(false);
+    const dispatch = useDispatch();
+
+    const rooms = useSelector(({ rooms }: StateInterface) => rooms);
+    const roomId = rooms.currentRoomId;
     const roomMessages = useSelector(getMessagesArray);
+
+    useEffect(() => {
+        (async () => {
+            await dispatch(getRoomMessages(roomId));
+            setLoaded(true);
+        })()
+    }, [dispatch, roomId])
+
 
     return (
         <>

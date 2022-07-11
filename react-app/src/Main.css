@@ -1,0 +1,13 @@
+#content-wrapper {
+    display: flex;
+    height: calc(100vh - 44px);
+}
+
+.gutter {
+    background-color: pink;
+    cursor: col-resize;
+}
+
+.gutter:hover {
+    background-color: aquamarine;
+}

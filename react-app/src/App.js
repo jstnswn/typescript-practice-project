@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Split from 'react-split';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navigation/NavBar';
@@ -10,6 +11,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import SideBar from './components/sidebar';
 import ActiveRoom from './components/room';
+import './Main.css';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,10 +46,21 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <div id='content-wrapper'>
-            <SideBar />
-            <ActiveRoom />
-          </div>
+          {/* <div id='content-wrapper'> */}
+            <Split id='content-wrapper'
+              cursor="col-resize"
+              direction="horizontal"
+              // minSize={270}
+              sizes={[20, 80]}
+              gutterSize={3}
+              dragInterval={2}
+              snapOffset={20}
+            >
+              <SideBar />
+              <ActiveRoom />
+
+            </Split>
+          {/* </div> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -1,4 +1,11 @@
+#nav-container {
+    height: 44px;
+    /* border: purple 1px solid; */
+}
+
 #nav-container ul {
     display: flex;
     justify-content: space-between;
+    padding: 0;
+    margin: 0;
 }
