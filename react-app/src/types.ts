@@ -1,3 +1,8 @@
+export interface UserInterface {
+    email: string,
+    id: number,
+    username: string
+}
 export interface RoomInterface {
     id: number,
     name: string,
@@ -7,19 +12,13 @@ export interface RoomInterface {
 export interface MessageInterface {
     id: number,
     room_id: number,
-    user_id: number,
+    user: UserInterface
     text: string
 }
 
 export interface PostMessageInterface {
     roomId: number,
     text: string
-}
-
-export interface UserInterface {
-    email: string,
-    id: number,
-    username: string
 }
 
 export interface StateInterface {

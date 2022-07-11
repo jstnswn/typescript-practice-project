@@ -16,6 +16,6 @@ class Message(db.Model):
         return {
             'id': self.id,
             'room_id': self.room_id,
-            'user_id': self.user_id,
+            'user': self.user.to_dict(),
             'text': self.text
         }

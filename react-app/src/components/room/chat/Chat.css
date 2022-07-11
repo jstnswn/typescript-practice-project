@@ -4,3 +4,8 @@
 .chat-wrapper ul {
     padding: 0;
 }
+
+.chat-user {
+    color: aquamarine;
+    margin-right: 10px;
+}

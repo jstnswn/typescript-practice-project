@@ -22,13 +22,18 @@ const Chat: FC = () => {
 
     return (
         <>
-            <div className='chat-wrapper'>
-                <ul>
-                    {roomMessages.length > 0 && roomMessages.map((message: MessageInterface, idx: number) => (
-                        <li key={idx}>{message.text}</li>
-                    ))}
-                </ul>
-            </div>
+            {loaded && (
+                    <div className='chat-wrapper'>
+                        <ul>
+                            {roomMessages.length > 0 && roomMessages.map((message: MessageInterface, idx: number) => (
+                                <li key={idx}>
+                                    <span className='chat-user'>{message.user.username}</span>
+                                    {message.text}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+            )}
         </>
     )
 }
